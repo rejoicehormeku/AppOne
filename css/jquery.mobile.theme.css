@@ -45,7 +45,7 @@
 	background-image: linear-gradient( #444,#222 )
 }
 .ui-overlay-a {
-	background-image: none;
+	background-image: url("paper.gif");;
 	border-width: 0
 }
 .ui-body-a, .ui-body-a input, .ui-body-a select, .ui-body-a textarea, .ui-body-a button {
