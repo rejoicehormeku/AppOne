@@ -22,6 +22,33 @@
 			}
 		</script>
 
+		<script>
+		(function (){
+		document.addEventListener('deviceready', onDeviceReady.bind(this),false );
+		var pictureSource;
+		var destinationType;
+		
+		function onDeviceReady(){
+		pictureSource = navigator.camera.PictureSourceType;
+		destinationType = navigator.camera.DestinationType;
+		document.getElementById("capturePhoto").onclick = function(){
+		navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+		quality : 50,
+		
+		destinationType : destinationType.DATA_URL});
+		}
+		};
+		
+		function onPhotoDataSuccess(imageData){
+		var smallImage = document.getElementById('smallImage);
+		
+		smallImage.style.display = 'block';
+		
+		smallImage.src = "data:image/jpeg;base64," + imageData;
+		}
+		})
+		</script>
+		
 		<script src="js/lib/jquery.js"></script>
 		<!-- your scripts here -->
 		<script src="js/app/app.js"></script>
@@ -59,17 +86,21 @@
 				<h1>ELECTORAL COMMISSION GHANA</h1>
 				<a href="index.html" data-role="button" data-icon="refresh" data-iconpos="notext" style="background: white;border: none;">Refresh</a>
 			</div><!-- /header -->
-			<img src= "leaf.jpeg" />
+			<img src= "leaf.jpg" />
 			<div data-role="content" style="text-shadow: none">
 				<a href="#declare" data-transition="slide">
 				<button>Declare</button>
 				</div>
-				<div>
+				<div data-role="content" style="text-shadow: none">
 				<a href="#result" data-transition="flip">
 				<button>Results</button>
 				</div>
+				<div data-role="content" style="text-shadow: none">
+				<a href="#camera" id ="capturePhoto" data-transition="popup">
+				<button>Camera</button>
+				</div>
 				</div> </a>
-				<br />
+				
 			</div><!-- /content -->
 		</div><!-- /page -->
 
