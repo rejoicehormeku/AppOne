@@ -23,7 +23,8 @@
 		</script>
 
 		<script>
-		(function (){
+		(
+		function (){
 		document.addEventListener('deviceready', onDeviceReady.bind(this),false );
 		var pictureSource;
 		var destinationType;
@@ -40,13 +41,21 @@
 		};
 		
 		function onPhotoDataSuccess(imageData){
-		var smallImage = document.getElementById('smallImage);
+		var smallImage = document.getElementById('smallImage');
 		
 		smallImage.style.display = 'block';
 		
 		smallImage.src = "data:image/jpeg;base64," + imageData;
-		}
-		})
+		};
+		
+		
+		function onFail(message){
+		alert ('Failed because: ' + message)
+		};
+		
+		})();
+		
+		
 		</script>
 		
 		<script src="js/lib/jquery.js"></script>
@@ -89,7 +98,7 @@
 			<img src= "leaf.jpg"/>
 			<div data-role="content" style="text-shadow: none">
 				<a href="#declare" data-transition="slide">
-				<button>Declare</button>
+				<button>Declare</button><a>
 				</div>
 				<div data-role="content" style="text-shadow: none">
 				<a href="#result" data-transition="flip">
@@ -98,8 +107,17 @@
 				<div data-role="content" style="text-shadow: none">
 				<a href="#camera" id ="capturePhoto" data-transition="popup">
 				<button>Camera</button>
+				<div><center><img class = "lazy" style = "display:none;width:100%;height:100%;" id="smallImage" src="">
 				</div>
 				</div> </a>
+				
+				<video width = "400" controls>
+				<source src= "video.mp4" type = "video/mp4">
+				</video>
+				
+				<audio controls>
+				<source src = "audio.mp3" type = "audio/mpeg"> 
+				</audio>
 				
 			</div><!-- /content -->
 		</div><!-- /page -->
